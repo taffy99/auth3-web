@@ -23,7 +23,7 @@ const showLeft = computed(()=>{
     return !['Login','NotFound'].includes(routeName) && !/^Personal/.test(routeName)
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .page-container {
     display: flex;
     flex-direction: column;
@@ -39,12 +39,11 @@ const showLeft = computed(()=>{
         flex: 1;
         overflow: auto;
     }
-    > .left {
-        height: 100%;
+    .left {
         background-color: #000;
         color: #fff;
     }
-    > .right {
+    .right {
         flex: 1;
         overflow: hidden;
         background-color: #f5f7f9;

@@ -5,7 +5,9 @@
   
 </template>
 <script setup>
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { elementLocales } from '@/i18n';
+const { locale } = useI18N()
+locale.value = localStorage.getItem('locale') || 'zh-cn'
 </script>
 <style scoped>
 html,
