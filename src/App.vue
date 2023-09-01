@@ -6,7 +6,7 @@
 </template>
 <script setup>
 import { elementLocales } from '@/i18n';
-const { locale } = useI18N()
+const { locale } = useI18n()
 locale.value = localStorage.getItem('locale') || 'zh-cn'
 </script>
 <style scoped>

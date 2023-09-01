@@ -11,33 +11,65 @@
                 <span class="item" :class="{active: locale === 'zh-cn'}" @click="changeLanguage('zh-cn')">简体中文</span>/
                 <span class="item" :class="{active:locale === 'en'}" @click="changeLanguage('en')">EN</span>
             </div>
-            <div class="gap cursor">
-                <router-link to="/personal/message">
-                    <el-icon></el-icon>
-                </router-link>
-            </div>
-            <el-dropdown trigger="click">
-                <div class="flex-center cursor">
-                    这里是用户名
-                    <el-icon><caret-bottom/></el-icon>
+            <template v-if="isLogin">
+                <div class="gap cursor">
+                    <router-link to="/personal/message">
+                        <el-badge :is-dot="!!unReadCount">
+                            <el-icon>
+                                <message/>
+                            </el-icon>
+                        </el-badge>
+                    </router-link>
                 </div>
-                <template #dropdown>
-                    <el-dropdown-menu>
-                        <el-dropdown-item>{{ t('personalCenter') }}</el-dropdown-item>
-                        <el-dropdown-item>{{ t('logout') }}</el-dropdown-item>
-                    </el-dropdown-menu>
-                </template>
-            </el-dropdown>
+                <el-dropdown trigger="click" @command="handleCommand">
+                    <div class="flex-center cursor">
+                        {{ username }}
+                        <el-icon><caret-bottom/></el-icon>
+                    </div>
+                    <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item command="toPersonal">{{ t('personalCenter') }}</el-dropdown-item>
+                            <el-dropdown-item divided command="toLogout">{{ t('logout') }}</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
+            </template>
+            <template v-else-if="$forceUpdate.name !='Login'">
+                <router-link to="/login">{{ t('login') }}</router-link>
+            </template>
         </div>
     </div>
 </template>
 <script setup>
+import { useRouter } from 'vue-router';
+
 const {locale, t} = useI18n()
 
 // 语言切换
 function changeLanguage(lang) {
     locale.value = lang
     localStorage.setItem('locale', lang)
+}
+const isLogin = ref(false)
+const username = ref('admin')
+isLogin.value = true
+const unReadCount = ref(0)
+unReadCount.value = 3
+
+// 登录后列表
+const router = useRouter()
+const commands = ({
+    toPersonal: () => {
+        console.log('toPersonal')
+        router.push('/personal')
+    },
+    toLogout: () => {
+        console.log('退出')
+    }
+})
+
+function handleCommand(command) {
+    commands[command] && commands[command]()
 }
 </script>
 <style lang="scss" scoped>
