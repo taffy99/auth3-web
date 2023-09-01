@@ -56,6 +56,12 @@ const routes = [
 const router =  createRouter({
     history:createWebHashHistory(),
     routes
-
+})
+router.beforeEach((to)=> {
+    const token =  localStorage.getItem('pm_token')
+    if (to.meta.requireAuth && !token) {
+        return { name: 'Login'}
+    }
+    return true
 })
 export default router
