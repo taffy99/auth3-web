@@ -1,3 +1,4 @@
+import {users} from '../data'
 // 系统登陆模块
 export function login() {
     return {
@@ -5,14 +6,26 @@ export function login() {
         method: "post",
         response: (opts) => {
             const name = opts.data.account
-            return {
-                code: 200,
-                msg: '',
-                data: {
-                    token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZGlpbiIsImV4cC",
-                    name
+            if(
+                users.find(
+                    (v) => v.name === opts.data.account && v.password === opts.data.password
+                )
+            ){
+                return {
+                    code: 200,
+                    msg: '',
+                    data: {
+                        token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZGlpbiIsImV4cC",
+                        name
+                    }
+                }
+            } else {
+                return {
+                    code: -1,
+                    msg: '用户名或密码错误'
                 }
             }
+            
         
         }
     }
