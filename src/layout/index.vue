@@ -46,8 +46,9 @@ const showLeft = computed(()=>{
     .right {
         flex: 1;
         overflow: hidden;
+        height: 100%;
         background-color: #f5f7f9;
-        > .main-body {
+        .main-body {
             padding: 16px 16px 30px;
             overflow: auto;
             height: 100%;
