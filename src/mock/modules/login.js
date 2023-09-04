@@ -15,7 +15,7 @@ export function login() {
                     code: 200,
                     msg: '',
                     data: {
-                        token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZGlpbiIsImV4cC",
+                        token: name + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZGlpbiIsImV4cC",
                         name
                     }
                 }

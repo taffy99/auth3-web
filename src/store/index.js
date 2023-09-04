@@ -1,11 +1,13 @@
 import { createStore } from 'vuex'
+// 引入子模块
+import user from './modules/user'
 export default createStore ( {
     state: {
-        count: 0
     },
     mutations: {
-        increase(state,count) {
-            state.count += count
-        }
+    },
+    modules: {
+        user
     }
+
 })

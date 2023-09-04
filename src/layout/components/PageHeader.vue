@@ -41,21 +41,25 @@
     </div>
 </template>
 <script setup>
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-
+import { logout } from '@/apis/login'
 const {locale, t} = useI18n()
+
 
 // 语言切换
 function changeLanguage(lang) {
     locale.value = lang
     localStorage.setItem('locale', lang)
 }
-const isLogin = ref(false)
-const username = ref('admin')
-isLogin.value = true
-const unReadCount = ref(0)
-unReadCount.value = 3
+const store = useStore()
+const isLogin = computed(()=> store.getters['user/isLogin'])
+const userInfo = computed(()=> store.state.user.userInfo)
+console.log('userInfo', userInfo)
+const username = computed(()=> userInfo.value?.name)
+const unReadCount = computed(()=> userInfo.value?.unReadCount)
 
+store.dispatch('user/refreshInfo')
 // 登录后列表
 const router = useRouter()
 const commands = ({
@@ -64,7 +68,13 @@ const commands = ({
         router.push('/personal')
     },
     toLogout: () => {
-        console.log('退出')
+        logout().then(res=> {
+            if(res.code == 200) {
+                store.commit('user/clearToken')
+                store.commit('user/clearUserInfo')
+                router.push('/login')
+            }
+        })
     }
 })
 
