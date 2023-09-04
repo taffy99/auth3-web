@@ -66,8 +66,8 @@ function doLogin() {
 <style lang="scss">
 .page {
     height: 100%;
-    // background: url(~@/assets/bg.jpg) no-repeat;
-    //background-size: cover;  
+    background: url(src/assets/bg.gif) no-repeat;
+    background-size: cover;  
     display: flex;
     align-items: center;
     justify-content: center;

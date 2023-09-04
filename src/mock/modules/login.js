@@ -30,3 +30,15 @@ export function login() {
         }
     }
 }
+// 退出登陆
+export function logout() {
+    return {
+        url: "logout",
+        method: "get",
+        response: {
+            code: 200,
+            msg: null,
+            data: {}
+        }
+    }
+}

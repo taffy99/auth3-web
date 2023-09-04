@@ -27,7 +27,7 @@ const showLeft = computed(()=>{
 .page-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
     > header {
         height: 54px;
