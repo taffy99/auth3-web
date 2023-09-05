@@ -5,5 +5,19 @@ export default {
     logout: 'Exit',
     tips404: 'Sorry,page Not Found!',
     backHome: 'Back to HomePage',
-    form: {}
+    form: {},
+    menu: {
+        App: 'Website',
+        AppUser: 'User',
+        AppDept: 'Department',
+        AppRole: 'Role',
+        AppResource: 'Resource',
+        AppPermission: 'Permission',
+        Sys: 'System',
+        SysUser: 'User',
+        SysNotice: 'Notice',
+        Logs: 'Logs',
+        LogsVisit: 'Visits',
+        LogsOperation: 'Operations',
+    }
 }
