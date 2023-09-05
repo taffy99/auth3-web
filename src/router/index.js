@@ -76,12 +76,15 @@ function hasRoute(to) {
     const item = router.getRoutes().find((item)=> item.path === to.path)
     return !!item
 }
+// 定义一个动态添加路由的方法addDynamic
 function addDynamic() {
+    //  通过状态routeLoaded判断动态路由是否已经添加过
     if(store.state.routeLoaded) {
         return
     }
+    // 若没有添加，调用menuTree 用户菜单接口
     return menuTree().then((res)=> {
-        // 添加动态路由
+        // 添加动态路由，根据返回的菜单信息拼接路由
         if(res.data && res.data.length) {
             addDynamicRoutes(res.data)
         }
@@ -105,24 +108,27 @@ function addDynamicRoutes(data, parent) {
                 },
                 children: []
             };
+        
         if(parent) {
+            console.log('ddffff')
             if(item.parentId !==0) {
                 const compParr = item.path.replace("/", "").split("/")
                 const l = compParr.length - 1
                 const compPath = compParr.map((v,i)=> {
                     return i===l ? v.replace(/\w/,(L)=>L.toUpperCase()) + '.vue':v
                 }).join('/')
-                route.path = compParr[l]
+                route.path = compParr[1]
                 // 设置动态组件
                 route.component = modules[`../views/${compPath}`]
                 parent.children.push(route)
             }
         } else {
+            console.log('aaaassss')
             if(item.children && item.children.length) {
                 route.redirect = item.children[0].path
                 addDynamicRoutes(item.children, route)
             }
-            route.component = PageFrame
+           route.component = PageFrame
             if(i === 0) {
                 store.commit('setFirstRoute', route)
             }
