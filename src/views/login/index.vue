@@ -54,8 +54,8 @@ function doLogin() {
         login(form).then((res)=> {
             store.commit('user/setToken', res.data.token)
             store.dispatch('user/refreshInfo')
-            // store.commit('setRouteLoaded', false)
-            localStorage.setItem('pm_token', res.data.token)
+            store.commit('setRouteLoaded', false)
+            //localStorage.setItem('pm_token', res.data.token)
             router.push("/")
         }).finally(()=>{
             loading.value = false

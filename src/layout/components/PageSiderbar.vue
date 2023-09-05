@@ -1,5 +1,11 @@
 <template>
     <div class="page-siderbar">
+        <div class="collape-bar">
+            <el-icon class="cursor" @click="isCollapse = !isCollapse">
+                <expand v-if="isCollapse"></expand>
+                <fold v-else></fold>
+            </el-icon>
+        </div>
         <el-menu :default-active="defaultActive" router class="sidemenu" :collapse="isCollapse">
             <el-sub-menu v-for="(item, i) in treeData" :key="i" :index="item.path">
                 <template #title>
@@ -23,11 +29,14 @@
     </div>
 </template>
 <script setup>
-import { menuTreeData } from '@/mock/data';
+import { computed, ref } from "vue"
+
+// import { menuTreeData } from '@/mock/data';
 const route = useRoute()
 const store = useStore()
 const { t } = useI18n()
-const treeData = menuTreeData
+// const treeData = menuTreeData
+const treeData = computed(()=> store.state.menuTree)
 const defaultActive = computed(()=> route.path || treeData.value[0].path)
 const isCollapse = ref(false)
 </script>
@@ -47,6 +56,16 @@ $side-width: 200px;
     }
     .sidemenu.el-menu:not(.el-menu--collapse) {
         width: $side-width
+    }
+    .collape-bar {
+        color: #fff;
+        font-size: 16px;
+        line-height: 36px;
+        text-align: center;
+
+        .cursor {
+            cursor: pointer;
+        }
     }
 }
 </style>

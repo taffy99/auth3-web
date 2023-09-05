@@ -7,3 +7,11 @@ export const userInfo = (data) => {
         data
     })
 }
+// 导航菜单
+export const menuTree = (data) => {
+    return request({
+        url: "personal/menuTree",
+        method: 'get',
+        data
+    })
+}
