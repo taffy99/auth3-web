@@ -37,7 +37,7 @@ const routes = [
                     }
                 ]
             }
-        ]   
+        ] 
     }
     
 ]
@@ -68,9 +68,8 @@ router.beforeEach(async(to)=> {
         return { ...to }
     }
     if(to.path === '/' && store.state.firstRoute) {
-        return store.state.firstRoute
+       // return store.state.firstRoute
     }
-    return true
 })
 function hasRoute(to) {
     const item = router.getRoutes().find((item)=> item.path === to.path)
@@ -86,18 +85,20 @@ function addDynamic() {
     return menuTree().then((res)=> {
         // 添加动态路由，根据返回的菜单信息拼接路由
         if(res.data && res.data.length) {
-            addDynamicRoutes(res.data)
+           addDynamicRoutes(res.data)
         }
+
         router.addRoute(route404)
         store.commit('setRouteLoaded', true)
         // 保存菜单树
+        console.log('setMenuTree', res.data)
         store.commit("setMenuTree", res.data)
     })
 }
 // 动态引入views 下所有.vue文件（组件）
 // vite中可以使用 import.meta.glob 方法动态引入资源，这种引入方式默认是懒加载的
 const modules = import.meta.glob('../views/**/*.vue')
-function addDynamicRoutes(data, parent) {
+function addDynamicRoutes(data, parent) {     
         data.forEach((item,i) => {
             const route = {
                 path: item.path,
@@ -110,25 +111,23 @@ function addDynamicRoutes(data, parent) {
             };
         
         if(parent) {
-            console.log('ddffff')
             if(item.parentId !==0) {
-                const compParr = item.path.replace("/", "").split("/")
-                const l = compParr.length - 1
-                const compPath = compParr.map((v,i)=> {
-                    return i===l ? v.replace(/\w/,(L)=>L.toUpperCase()) + '.vue':v
+                const compArr = item.path.replace("/", "").split("/")
+                const lastIndex = compArr.length - 1
+                const compPath = compArr.map((v,i)=> {
+                    return i === lastIndex ? v.replace(/\w/,(L)=>L.toUpperCase()) + '.vue':v
                 }).join('/')
-                route.path = compParr[1]
+                route.path = compArr[lastIndex]
                 // 设置动态组件
                 route.component = modules[`../views/${compPath}`]
                 parent.children.push(route)
             }
         } else {
-            console.log('aaaassss')
             if(item.children && item.children.length) {
                 route.redirect = item.children[0].path
                 addDynamicRoutes(item.children, route)
-            }
-           route.component = PageFrame
+            } 
+            route.component = PageFrame
             if(i === 0) {
                 store.commit('setFirstRoute', route)
             }

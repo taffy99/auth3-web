@@ -12,7 +12,7 @@ const i18n = createI18n({
         'zh-cn': localZhCn,
         'en': localEn
     }
-})
+}) 
 export const elementLocales = {
     'zh-cn': zhCn,
     en

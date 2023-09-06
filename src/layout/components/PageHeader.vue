@@ -55,10 +55,10 @@ function changeLanguage(lang) {
 const store = useStore()
 const isLogin = computed(()=> store.getters['user/isLogin'])
 const userInfo = computed(()=> store.state.user.userInfo)
-console.log('userInfo', userInfo)
+// console.log('userInfo', userInfo)
 const username = computed(()=> userInfo.value?.name)
 const unReadCount = computed(()=> userInfo.value?.unReadCount)
-
+// 刷新个人信息
 store.dispatch('user/refreshInfo')
 // 登录后列表
 const router = useRouter()

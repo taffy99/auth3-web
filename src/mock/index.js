@@ -24,7 +24,7 @@ function MockAll(modules, isOpen = true) {
 // @param {*} mod 模块
 // @param {*} isOpen 是否开启？
 
-function mock(mod, isOpen= true){
+function mock(mod, isOpen = true){
     if(isOpen) { 
         for(var key in mod) {
             ((res) => {

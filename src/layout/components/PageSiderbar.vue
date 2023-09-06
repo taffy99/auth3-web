@@ -37,6 +37,7 @@ const store = useStore()
 const { t } = useI18n()
 // const treeData = menuTreeData
 const treeData = computed(()=> store.state.menuTree)
+console.log('treeData',treeData)
 const defaultActive = computed(()=> route.path || treeData.value[0].path)
 const isCollapse = ref(false)
 </script>

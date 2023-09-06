@@ -21,6 +21,7 @@ export default {
             localStorage.removeItem('pm_token')
         },
         setUserInfo(state, info) {
+            // console.log('infoinfo', info)
             state.userInfo = info || {}
         },
         clearUserInfo(state) {
@@ -28,7 +29,7 @@ export default {
         }
     },
     actions: {
-        refreshInfo({ commit }) {
+         refreshInfo({ commit }) {
             userInfo().then(res => {
                 commit('setUserInfo', res.data)
             })

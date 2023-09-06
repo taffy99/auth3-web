@@ -1,11 +1,10 @@
-import user from '../../store/modules/user'
 import {users, menuTreeData} from '../data'
 // 个人信息
 export function userInfo() {
     return {
-        url: "personal/userinfo",
+        url: "personal/userInfo",
         type: "get",
-        response: (opts) => {
+        response: () => {
             const token = localStorage.getItem('pm_token')
             if(token) {
                 const uinfo = {
