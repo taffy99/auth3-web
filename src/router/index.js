@@ -91,7 +91,7 @@ function addDynamic() {
         router.addRoute(route404)
         store.commit('setRouteLoaded', true)
         // 保存菜单树
-        console.log('setMenuTree', res.data)
+        // console.log('setMenuTree', res.data)
         store.commit("setMenuTree", res.data)
     })
 }
