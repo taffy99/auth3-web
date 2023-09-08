@@ -28,7 +28,9 @@ export default {
         edit: 'Edit',
         delete: 'Delete',
         batchDelete: 'Batch Delete',
-        search: 'Search'
+        search: 'Search',
+        cancel: 'Cancel',
+        confirm: 'Confirm'
     },
     thead: {
         ID: 'ID',
@@ -40,6 +42,17 @@ export default {
         duration: 'Duration(ms)',
         username: 'Username',
         createTime: 'CreateTime',
-        status: 'Status'
+        status: 'Status',
+        publishTime: ' PublishTime',
+        title: 'Title',
+        content: 'Content',
+        group: 'Group',
+        latestIp: 'Latest Ip',
+        latestVisit: 'Latest Visit',
+        createBy: 'CreateBy'
+    },
+    tips: {
+        deleteTitle: 'DeleteTitle',
+        deleteConfirm: 'DeleteConfirm'
     }
 }

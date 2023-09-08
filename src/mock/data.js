@@ -1,18 +1,50 @@
 export const users = [
     {
+        id: 4,
+        name: 'test',
+        roleId: 'master',
+        password: 'test',
+        createdBy: 'admin',
+        createdTime: '@date @time'
+    },
+    {
+        id: 3,
         name: 'visitor',
         roleId: 'visitor',
-        password: 'visitor'
+        password: 'visitor',
+        createdBy: 'system',
+        createdTime: '@date @time'
     },
     {
+        id: 2,
         name: 'master',
         roleId: 'master',
-        password: 'master'
+        password: 'master',
+        createdBy: 'system',
+        createdTime: '@date @time'
     },
     {
+        id: 1,
         name: 'admin',
         roleId: 'admin',
-        password: 'admin'
+        password: 'admin',
+        createdBy: 'system',
+        createdTime: '@date @time'
+    },
+
+]
+export const roles = [
+    {
+        name: 'admin    ',
+        label: '超级管理'
+    },
+    {
+        name: 'master    ',
+        label: '应用管理员'
+    },
+    {
+        name: 'visitor',
+        label: '普通用户'
     },
 
 ]

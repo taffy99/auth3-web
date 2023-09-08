@@ -28,7 +28,10 @@ export default {
         edit: '编辑',
         delete: '删除',
         batchDelete: '批量删除',
-        search: '查询'
+        search: '查询',
+        cancel: '取消',
+        confirm: '确定'
+
     },
     thead: {
         ID: 'ID',
@@ -40,9 +43,17 @@ export default {
         duration: '耗时(ms)',
         username: '用户名',
         createTime: '创建时间',
-        status: '状态'
+        status: '状态',
+        publishTime: '发布时间',
+        title: '标题',
+        content: '内容',
+        group: '管理组',
+        latestIp: '最近登陆IP',
+        latestVisit: '最近登录时间',
+        createBy: '创建人'
     },
     tips: {
+        deleteTitle: '删除提示',
         deleteConfirm: '确认删除'
     }
 }

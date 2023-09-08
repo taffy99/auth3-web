@@ -6,15 +6,9 @@
             class="cm-table_tb"
             v-bind="$attrs"
             >
-            <el-table-column v-for="column in columns" :key="column.prop" v-bind="column">
-
-            </el-table-column>
-            <!-- <el-table-column
-                v-if="showOperation"
-                fixed="right"
-                :label="t('action.operation')"
-                >
-                <template #default="{ row }">
+            <el-table-column v-for="column in columns" :key="column.prop" v-bind="column"></el-table-column>
+            <el-table-column v-if="showOperation" fixed="right" :label="t('action.operation')">
+                <template  #default="{row}">
                     <template v-for="(opr, i) in operations" :key="i">
                         <template v-if="isShow(opr.show, row)">
                             <el-button 
@@ -41,7 +35,7 @@
                         </template>
                     </template>
                 </template>
-            </el-table-column> -->
+            </el-table-column>
         </el-table>
         <!-- 分页栏 -->
         <div class="cm-table_toolbar">

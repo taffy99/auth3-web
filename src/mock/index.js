@@ -3,6 +3,8 @@ import config from '../request/config'
 import * as login from './modules/login'
 import * as personal from './modules/personal'
 import * as logsVisit from './modules/logsVisit'
+import * as sysNotice from './modules/sysNotice'
+import * as sysUser from './modules/sysUser'
 const { baseURL, timeout} = config
 Mock.setup((timeout))
 // 1、开启/关闭所有模块拦截，通过openMock 开关设置
@@ -10,7 +12,7 @@ Mock.setup((timeout))
 // 3、开启/关闭模块中某个请求拦截，通过函数返回对象中的isOpen 属性设置
 const openMock = true
 // 模拟所有模块
-MockAll([login, personal, logsVisit], openMock)
+MockAll([login, personal, logsVisit, sysNotice, sysUser], openMock)
 
 function MockAll(modules, isOpen = true) {
     console.log('modules', modules)
