@@ -3,7 +3,7 @@ import { roles, users } from "../data"
 // 分页查询
 export function listPage() {
     return {
-        url: 'sys/user/listPage',
+        url: 'app/user/listPage',
         type: 'get',
         response: (opts) => {
             const { pageNum, pageSize, name} = opts.data

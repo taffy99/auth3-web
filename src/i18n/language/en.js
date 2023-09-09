@@ -30,7 +30,8 @@ export default {
         batchDelete: 'Batch Delete',
         search: 'Search',
         cancel: 'Cancel',
-        confirm: 'Confirm'
+        confirm: 'Confirm',
+        submit: 'Submit'
     },
     thead: {
         ID: 'ID',
@@ -49,10 +50,12 @@ export default {
         group: 'Group',
         latestIp: 'Latest Ip',
         latestVisit: 'Latest Visit',
-        createBy: 'CreateBy'
+        createBy: 'CreateBy',
+        publish: 'Publish'
     },
     tips: {
         deleteTitle: 'DeleteTitle',
-        deleteConfirm: 'DeleteConfirm'
+        deleteConfirm: 'DeleteConfirm',
+        success: 'Success'
     }
 }

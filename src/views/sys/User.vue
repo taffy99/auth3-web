@@ -58,6 +58,11 @@
          minWidth: 120
      },
      {
+         prop: 'createdBy',
+         label: t('thead.createBy'),
+         minWidth: 120
+     },
+     {
          prop: 'ip',
          label: t('thead.latestIp'),
          minWidth: 100
@@ -66,12 +71,7 @@
          prop: 'visitTime',
          label: t('thead.latestVisit'),
          minWidth: 120
-     },
-     {
-         prop: 'createBy',
-         label: t('thead.createBy'),
-         minWidth: 120
-     },
+     }
  ])
   const operations = [
      {

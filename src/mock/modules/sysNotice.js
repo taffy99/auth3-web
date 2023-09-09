@@ -29,3 +29,13 @@ export function listPage() {
         }
     }
 }
+
+export function operations() {
+    return {
+        url: 'sys/notice/(save|update)',
+        method: 'post',
+        response: {
+            code: 200
+        }
+    }
+}

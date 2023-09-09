@@ -30,8 +30,8 @@ export default {
         batchDelete: '批量删除',
         search: '查询',
         cancel: '取消',
-        confirm: '确定'
-
+        confirm: '确定',
+        submit: '提交'
     },
     thead: {
         ID: 'ID',
@@ -50,10 +50,13 @@ export default {
         group: '管理组',
         latestIp: '最近登陆IP',
         latestVisit: '最近登录时间',
-        createBy: '创建人'
+        createBy: '创建人',
+        publish: '立即发布'
+        
     },
     tips: {
         deleteTitle: '删除提示',
-        deleteConfirm: '确认删除'
+        deleteConfirm: '确认删除',
+        success: '操作成功'
     }
 }
